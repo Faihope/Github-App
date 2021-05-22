@@ -18,3 +18,11 @@
 .logo {
   color: white;
 }
+.container{
+    background-color: thistle;
+    position: relative;
+}
+body{
+    background-color: wheat;
+    position: relative;
+}
