@@ -9,7 +9,8 @@ import { Repository } from "./repository";
 export class SearchGithubService {
   user: User | undefined;
   repository: Repository | undefined;
-  repodata = [];
+  repodata :any= [];
+  newUserData: any = [];
 
   constructor(private http: HttpClient) {
     this.user = new User("", 0, "", "", new Date)
@@ -23,23 +24,31 @@ export class SearchGithubService {
       avatar_url: String,
       created_at: Date
     }
-    let promise =new Promise<void>((resolve,reject)=>{
-      this.http.get<ApiResponse>("https://api.github.com/users/" + username).toPromise().then(response =>{
+    let promise = new Promise<void>((resolve, reject) => {
+      this.http.get<ApiResponse>("https://api.github.com/users/" + username).toPromise().then(response => {
         this.user!.bio = response.bio;
         this.user!.public_repos = response.public_repos;
         this.user!.login = response.login;
         this.user!.avatar_url = response.avatar_url;
-        this.user!. created_at = response. created_at;
-resolve()
+        this.user!.created_at = response.created_at;
+        resolve()
 
       },
-      error=>{
+        error => {
+          reject(error)
+        })
+      this.http.get<any>("https://api.github.com/users/" + username + "/repos").toPromise().then(response => {
+        for (let i = 0; i < response.lenght; i++) {
+          this.newUserData = new Repository(response[i].name, response[i].description, response[i].updated_at, response[i].clone_url, response[i].language);
+        this.repodata.push(this.newUserData);
+        
+        }
+        resolve()
+      },
+      error => {
         reject(error)
       })
-      this.http.get<any>("https://api.github.com/users/" + username + "/repos").toPromise().then(response=>{
-        
-      })
     })
-    
+return promise;
   }
 }
