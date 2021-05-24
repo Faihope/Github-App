@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { SearchGithubService } from "../search-github.service";
 
 @Component({
   selector: 'app-results',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
+  user: User ;
+  repoDetails = []
+  searchgithubservice: SearchGithubService
 
-  constructor() { }
+  constructor(searchgithubservice: SearchGithubService) {
+    this.searchgithubservice = searchgithubservice
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.user = this.searchgithubservice.user;
+    this.repoDetails = this.searchgithubservice.repodata;
   }
 
 }

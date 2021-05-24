@@ -1,28 +1,7 @@
-.navbar-default {
-  background-color: black;
-  padding: 2%;
- 
-
-}
-
-.navbar-default a {
-  color: white;
-  float: right;
-  margin-right: 60px;
-  font-size: 1.5rem;
-  text-decoration: none;
- 
-
-}
-
-.logo {
-  color: white;
-}
 .container{
-    background-color: thistle;
-    position: relative;
-}
-body{
-    background-color: wheat;
-    position: relative;
+  background-color:cornsilk;
+  width:70% ;
+  margin: auto;
+  height: auto;
+  margin-top: 5%;
 }

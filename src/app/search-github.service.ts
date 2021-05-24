@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { User } from "./user";
 import { Repository } from "./repository";
 
@@ -7,10 +7,10 @@ import { Repository } from "./repository";
   providedIn: 'root'
 })
 export class SearchGithubService {
-  user: User | undefined;
-  repository: Repository | undefined;
-  repodata :any= [];
-  newUserData: any = [];
+  user: User 
+  repository: Repository;
+  repodata = [];
+  newUserData:any = [];
 
   constructor(private http: HttpClient) {
     this.user = new User("", 0, "", "", new Date)
@@ -25,21 +25,21 @@ export class SearchGithubService {
       created_at: Date
     }
     let promise = new Promise<void>((resolve, reject) => {
-      this.http.get<ApiResponse>("https://api.github.com/users/" + username).toPromise().then(response => {
-        this.user!.bio = response.bio;
-        this.user!.public_repos = response.public_repos;
-        this.user!.login = response.login;
-        this.user!.avatar_url = response.avatar_url;
-        this.user!.created_at = response.created_at;
+      this.http.get<ApiResponse>("https://api.github.com/users/" + username).toPromise().then(Response => {
+        this.user.bio = Response.bio;
+        this.user.public_repos = Response.public_repos;
+        this.user.login = Response.login;
+        this.user.avatar_url = Response.avatar_url;
+        this.user.created_at = Response.created_at;
         resolve()
 
       },
         error => {
           reject(error)
         })
-      this.http.get<any>("https://api.github.com/users/" + username + "/repos").toPromise().then(response => {
-        for (let i = 0; i < response.lenght; i++) {
-          this.newUserData = new Repository(response[i].name, response[i].description, response[i].updated_at, response[i].clone_url, response[i].language);
+      this.http.get<any>("https://api.github.com/users/" + username + "/repos").toPromise().then(Response => {
+        for (let i = 0; i < Response.lenght; i++) {
+          this.newUserData = new Repository(Response[i].name, Response[i].description, Response[i].updated_at, Response[i].clone_url, Response[i].language);
         this.repodata.push(this.newUserData);
         
         }

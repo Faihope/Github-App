@@ -1,0 +1,16 @@
+.row{
+    /* background-color: bisque;
+    width: 70%;
+    height: 500px;
+    margin: auto;
+    border-radius: 4%;
+} */
+}
+.col-md-6{
+    width: 50%;
+    margin-top:2% ;
+    border-radius: 4%;
+}
+.search{
+    margin-top: 4%;
+}

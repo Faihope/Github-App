@@ -1,1 +1,34 @@
-<p>results works!</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <img src={{user.avatar_url}} alt="">
+      <h4> {{user.login}}</h4>
+      <p>{{user.bio}}</p>
+      <p>  {{user.created_at | date}}</p>
+      <p>  {{user.public_repos}}</p>
+      <div *ngFor="let repoDetail of repoDetails" >
+      <h4>{{repoDetail.name}} </h4>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      {{repoDetails}}
+     
+      <div *ngFor="let repoDetail of repoDetails" >
+        
+        <h4>{{repoDetail.name}} </h4>
+        <p>{{repoDetail.clone_url}}</p>
+        <p>{{repoDetail.description}}</p>
+        <small>{{repoDetail.language}}</small>
+        <small>{{repoDetail.updated_at | date}}</small>
+
+      </div>
+    
+    </div>
+
+
+  </div>
+
+</div>

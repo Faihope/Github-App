@@ -6,7 +6,5 @@ export class User {
         public avatar_url:String,
         public created_at:Date
     
-    ){
-
-    }
+    ){}
 }

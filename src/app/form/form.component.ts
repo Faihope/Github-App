@@ -6,12 +6,14 @@ import { SearchGithubService } from "../search-github.service";
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  username?:string;
-  searchsithubservice?:SearchGithubService;
+  username:string;
+  searchgithubservice:SearchGithubService;
   submitUsername(){
-    this.searchsithubservice?.newUserData(this.username);
+    this.searchgithubservice.getUser(this.username);
   }
-  constructor() { }
+  constructor(searchgithubservice:SearchGithubService) { 
+    this.searchgithubservice= searchgithubservice
+  }
 
   ngOnInit(): void {
   }
