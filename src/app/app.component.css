@@ -5,3 +5,14 @@
   height: auto;
   margin-top: 5%;
 }
+.title{
+  text-align: center;
+  margin-top: 3%;
+
+}
+.results{
+  background-color: bisque;
+  margin-left: 30%;
+  width: 1000px;
+  margin: auto;
+}

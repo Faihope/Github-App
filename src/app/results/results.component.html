@@ -1,23 +1,22 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-6">
-
+    <div class="col-md-12">
       <img src={{user.avatar_url}} alt="">
-      <h4> {{user.login}}</h4>
-      <p>{{user.bio}}</p>
-      <p>  {{user.created_at | date}}</p>
-      <p>  {{user.public_repos}}</p>
-      <div *ngFor="let repoDetail of repoDetails" >
-      <h4>{{repoDetail.name}} </h4>
-      </div>
+      <h4> Username: {{user.login}}</h4>
+      <p> Bio:{{user.bio}}</p>
+      <p> Date Created on:{{user.created_at | date}}</p>
+      <p> Number of Repositories:{{user.public_repos}}  </p>
+      <br>
+      <h1>The list of repositories and their discriptions</h1>
     </div>
+  </div>
 
-    <div class="col-md-6">
-      {{repoDetails}}
-     
-      <div *ngFor="let repoDetail of repoDetails" >
-        
+  <div class="row two">
+    <div class="col-sm-12">
+      <div *ngFor="let repoDetail of repoDetails">
+
+
         <h4>{{repoDetail.name}} </h4>
         <p>{{repoDetail.clone_url}}</p>
         <p>{{repoDetail.description}}</p>
@@ -25,10 +24,6 @@
         <small>{{repoDetail.updated_at | date}}</small>
 
       </div>
-    
     </div>
-
-
   </div>
-
 </div>

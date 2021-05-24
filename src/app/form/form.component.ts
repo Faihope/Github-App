@@ -10,6 +10,7 @@ export class FormComponent implements OnInit {
   searchgithubservice:SearchGithubService;
   submitUsername(){
     this.searchgithubservice.getUser(this.username);
+    this.searchgithubservice.getRepos(this.username);
   }
   constructor(searchgithubservice:SearchGithubService) { 
     this.searchgithubservice= searchgithubservice

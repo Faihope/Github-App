@@ -7,10 +7,10 @@ import { Repository } from "./repository";
   providedIn: 'root'
 })
 export class SearchGithubService {
-  user: User 
+  user: User
   repository: Repository;
   repodata = [];
-  newUserData:any = [];
+  newUserData: any = [];
 
   constructor(private http: HttpClient) {
     this.user = new User("", 0, "", "", new Date)
@@ -24,6 +24,7 @@ export class SearchGithubService {
       avatar_url: String,
       created_at: Date
     }
+
     let promise = new Promise<void>((resolve, reject) => {
       this.http.get<ApiResponse>("https://api.github.com/users/" + username).toPromise().then(Response => {
         this.user.bio = Response.bio;
@@ -37,18 +38,26 @@ export class SearchGithubService {
         error => {
           reject(error)
         })
+
+
+    })
+    return promise;
+  }
+  getRepos(username: string) {
+    let promise = new Promise<void>((resolve, reject) => {
       this.http.get<any>("https://api.github.com/users/" + username + "/repos").toPromise().then(Response => {
-        for (let i = 0; i < Response.lenght; i++) {
+        for (let i = 0; i < Response.length; i++) {
           this.newUserData = new Repository(Response[i].name, Response[i].description, Response[i].updated_at, Response[i].clone_url, Response[i].language);
-        this.repodata.push(this.newUserData);
-        
+          this.repodata.push(this.newUserData);
+
         }
         resolve()
       },
-      error => {
-        reject(error)
-      })
+        error => {
+          reject(error)
+        })
     })
-return promise;
+    return promise;
   }
+  
 }
