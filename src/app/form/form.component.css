@@ -1,5 +1,5 @@
 
-.col-md-6{
+.col-sm-6{
     width: 60%;
     margin: auto;
     margin-top:2% ;
@@ -7,7 +7,7 @@
     margin-left: 60%;
 
 }
-.col-md-6 .search{
+.col-sm-6 .search{
     margin-top: 4%;
     border-radius: 7%;
     margin-left: 20%;
