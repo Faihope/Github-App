@@ -20,6 +20,6 @@ Angular
 Git
 Bootstrap
 ### Live Site
-View [live](https://faihope.github.io/Quotes-Angular/)
+View [live](https://faihope.github.io/Github-App/)
 ### License
 This project is under the  [MIT](license) licence
